@@ -86,7 +86,7 @@ class Graph:
     def generate_acyclic_graph(self, saturation):
         for i in range(1, self.nodes):
             for j in range(i + 1, self.nodes + 1):
-                if random.random() < (saturation / 100):  # Skala 0-100 na procent krawędzi
+                if random.random() < (saturation / 100):
                     self.add_edge(i, j)
 
     def export_to_tex(self, filename):
@@ -122,32 +122,72 @@ class Graph:
 
         print(f"Graph exported to {filename}")
 
-
 def main():
     if len(sys.argv) < 2:
         print("Użycie: ./program --generate lub ./program --user-provided")
         return
 
     if sys.argv[1] == "--generate":
-        rep = input("type> ").strip()
-        nodes = int(input("nodes> "))
-        graph = Graph(nodes, rep)
-        saturation = int(input("saturation> "))
+        print("Dostępne reprezentacje grafu: matrix, list, table")
+        rep = input("type> ").strip().lower()
 
+        while rep not in ("matrix", "list", "table"):
+            rep = input("Niepoprawna reprezentacja. Wpisz: matrix, list lub table> ").strip().lower()
+
+        while True:
+            try:
+                nodes = int(input("nodes> "))
+                if nodes <= 0:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Błąd: Podaj dodatnią liczbę całkowitą dla liczby wierzchołków.")
+
+        while True:
+            try:
+                saturation = int(input("saturation (0-100)> "))
+                if not (0 <= saturation <= 100):
+                    raise ValueError
+                break
+            except ValueError:
+                print("Błąd: Wprowadź liczbę całkowitą w zakresie 0-100.")
+
+        graph = Graph(nodes, rep)
         graph.generate_acyclic_graph(saturation)
         print("Graf wygenerowany!")
 
     elif sys.argv[1] == "--user-provided":
-        rep = input("type> ").strip()
-        nodes = int(input("nodes> "))
+        print("Dostępne reprezentacje grafu: matrix, list, table")
+        rep = input("type> ").strip().lower()
+
+        while rep not in ("matrix", "list", "table"):
+            rep = input("Niepoprawna reprezentacja. Wpisz: matrix, list lub table> ").strip().lower()
+
+        while True:
+            try:
+                nodes = int(input("nodes> "))
+                if nodes <= 0:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Błąd: Podaj dodatnią liczbę całkowitą dla liczby wierzchołków.")
+
         graph = Graph(nodes, rep)
 
         for i in range(1, nodes + 1):
-            line = input(f"{i}> ").strip()
-            if line:
-                for v in map(int, line.split()):
-                    graph.add_edge(i, v)
-
+            while True:
+                try:
+                    line = input(f"{i}> ").strip()
+                    if not line:
+                        break
+                    for v in map(int, line.split()):
+                        if 1 <= v <= nodes:
+                            graph.add_edge(i, v)
+                        else:
+                            print(f"Uwaga: Wierzchołek {v} nie istnieje (zakres 1–{nodes}) i został pominięty.")
+                    break
+                except ValueError:
+                    print("Błąd: Wprowadź numery wierzchołków oddzielone spacjami.")
     else:
         print("Nieznana opcja. Użyj --generate lub --user-provided.")
         return
@@ -157,28 +197,46 @@ def main():
         if action == "print":
             graph.print_graph()
         elif action == "find":
-            u = int(input("from> "))
-            v = int(input("to> "))
-            if graph.has_edge(u, v):
-                print(f"True: edge ({u},{v}) exists in the Graph!")
-            else:
-                print(f"False: edge ({u},{v}) does not exist in the Graph!")
+            try:
+                u = int(input("from> "))
+                v = int(input("to> "))
+                if 1 <= u <= graph.nodes and 1 <= v <= graph.nodes:
+                    if graph.has_edge(u, v):
+                        print(f"True: edge ({u},{v}) exists in the Graph!")
+                    else:
+                        print(f"False: edge ({u},{v}) does not exist in the Graph!")
+                else:
+                    print(f"Błąd: Wierzchołki muszą być w zakresie 1–{graph.nodes}.")
+            except ValueError:
+                print("Błąd: Wprowadź poprawne liczby całkowite.")
         elif action == "export":
             filename = input("filename> ").strip()
             graph.export_to_tex(filename)
         elif action == "breadth-first search":
-            start = int(input("start> ") or "1")
-            graph.bfs(start)
+            try:
+                start = int(input("start> ") or "1")
+                if 1 <= start <= graph.nodes:
+                    graph.bfs(start)
+                else:
+                    print(f"Błąd: Numer wierzchołka musi być w zakresie 1–{graph.nodes}.")
+            except ValueError:
+                print("Błąd: Wprowadź poprawny numer wierzchołka.")
         elif action == "depth-first search":
-            start = int(input("start> ") or "1")
-            graph.dfs(start)
+            try:
+                start = int(input("start> ") or "1")
+                if 1 <= start <= graph.nodes:
+                    graph.dfs(start)
+                else:
+                    print(f"Błąd: Numer wierzchołka musi być w zakresie 1–{graph.nodes}.")
+            except ValueError:
+                print("Błąd: Wprowadź poprawny numer wierzchołka.")
         elif action in ("exit", "quit"):
             break
         elif action == "help":
             print("""
 Dostępne akcje:
   Print                 - Wypisz graf w wybranej reprezentacji (matrix, list, table)
-  Find                  - Sprawdź, czy istnieje krawędź (from> x, to> y)
+  Find                  - Sprawdź, czy istnieje krawędź (od x do y)
   Breadth-first search  - Przeszukiwanie wszerz (BFS)
   Depth-first search    - Przeszukiwanie w głąb (DFS)
   Export                - Eksportuj graf do pliku LaTeX (.tex) jako drzewo (TikZ)
@@ -187,7 +245,6 @@ Dostępne akcje:
 """)
         else:
             print("Nieznana akcja")
-
 
 if __name__ == "__main__":
     main()
