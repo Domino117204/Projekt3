@@ -236,7 +236,7 @@ def main():
             print("""
 Dostępne akcje:
   Print                 - Wypisz graf w wybranej reprezentacji (matrix, list, table)
-  Find                  - Sprawdź, czy istnieje krawędź (od x do y)
+  Find                  - Sprawdź, czy istnieje krawędź (od x y)
   Breadth-first search  - Przeszukiwanie wszerz (BFS)
   Depth-first search    - Przeszukiwanie w głąb (DFS)
   Export                - Eksportuj graf do pliku LaTeX (.tex) jako drzewo (TikZ)
