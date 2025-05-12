@@ -54,9 +54,10 @@ class Graph:
             current = queue.popleft()
             result.append(current + 1)
             for neighbor in self._neighbors(current):
-                if not visited[neighbor - 1]:
-                    visited[neighbor - 1] = True
-                    queue.append(neighbor - 1)
+                neighbor_idx = neighbor - 1
+                if not visited[neighbor_idx]:
+                    visited[neighbor_idx] = True
+                    queue.append(neighbor_idx)
         print("inline:", " ".join(map(str, result)))
 
     def dfs(self, start):
@@ -68,8 +69,9 @@ class Graph:
             visited[node] = True
             result.append(node + 1)
             for neighbor in self._neighbors(node):
-                if not visited[neighbor - 1]:
-                    dfs_visit(neighbor - 1)
+                neighbor_idx = neighbor - 1
+                if not visited[neighbor_idx]:
+                    dfs_visit(neighbor_idx)
 
         dfs_visit(start)
         print("inline:", " ".join(map(str, result)))
@@ -84,8 +86,6 @@ class Graph:
         return []
     
     def topological_sort_kahn(self):
-        from collections import defaultdict, deque
-
         graph_dict = {i + 1: self.adj_list[i] for i in range(self.nodes)}
         in_degree = defaultdict(int)
 
