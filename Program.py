@@ -135,12 +135,15 @@ class Graph:
         result.reverse()  # kolejność odwrotna do kolejności odwiedzin
         return result
 
-
     def generate_acyclic_graph(self, saturation):
-        for i in range(1, self.nodes):
-            for j in range(i + 1, self.nodes + 1):
-                if random.random() < (saturation / 100):
-                    self.add_edge(i, j)
+        possible_edges = [(i, j) for i in range(1, self.nodes) for j in range(i + 1, self.nodes + 1)]
+        max_edges = len(possible_edges)
+        num_edges_to_add = round((saturation / 100) * max_edges)
+
+        selected_edges = random.sample(possible_edges, num_edges_to_add)
+
+        for u, v in selected_edges:
+            self.add_edge(u, v)
 
     def export_to_tex(self, filename):
         edges = []
@@ -306,6 +309,7 @@ Dostępne akcje:
   BFS                   - Breadth-first search (Przeszukiwanie wszerz)
   DFS                   - Depth-first search (Przeszukiwanie w głąb)
   Kahn                  - Sortowanie topologiczne algorytmem Kahna
+  Tarjan                - Sortowanie topologiczne algorytmem Tarjana
   Export                - Eksportuj graf do pliku LaTeX (.tex) jako drzewo (TikZ)
   Help                  - Wyświetl to menu pomocy
   Exit / Quit           - Zakończ program
