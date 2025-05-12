@@ -265,7 +265,7 @@ def main():
         elif action == "export":
             filename = input("filename> ").strip()
             graph.export_to_tex(filename)
-        elif action == "breadth-first search":
+        elif action == "bfs":
             try:
                 start = int(input("start> ") or "1")
                 if 1 <= start <= graph.nodes:
@@ -274,7 +274,7 @@ def main():
                     print(f"Błąd: Numer wierzchołka musi być w zakresie 1–{graph.nodes}.")
             except ValueError:
                 print("Błąd: Wprowadź poprawny numer wierzchołka.")
-        elif action == "depth-first search":
+        elif action == "dfs":
             try:
                 start = int(input("start> ") or "1")
                 if 1 <= start <= graph.nodes:
@@ -303,8 +303,8 @@ def main():
 Dostępne akcje:
   Print                 - Wypisz graf w wybranej reprezentacji (matrix, list, table)
   Find                  - Sprawdź, czy istnieje krawędź (od x y)
-  Breadth-first search  - Przeszukiwanie wszerz (BFS)
-  Depth-first search    - Przeszukiwanie w głąb (DFS)
+  BFS                   - Breadth-first search (Przeszukiwanie wszerz)
+  DFS                   - Depth-first search (Przeszukiwanie w głąb)
   Kahn                  - Sortowanie topologiczne algorytmem Kahna
   Export                - Eksportuj graf do pliku LaTeX (.tex) jako drzewo (TikZ)
   Help                  - Wyświetl to menu pomocy
