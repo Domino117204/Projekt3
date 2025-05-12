@@ -1,5 +1,5 @@
 import sys
-from collections import deque
+from collections import deque, defaultdict
 import random
 import math
 
@@ -82,6 +82,59 @@ class Graph:
         elif self.representation == "table":
             return [v for (u, v) in self.table if u == node + 1]
         return []
+    
+    def topological_sort_kahn(self):
+        from collections import defaultdict, deque
+
+        graph_dict = {i + 1: self.adj_list[i] for i in range(self.nodes)}
+        in_degree = defaultdict(int)
+
+        for u in graph_dict:
+            for v in graph_dict[u]:
+                in_degree[v] += 1
+
+        S = deque([u for u in graph_dict if in_degree[u] == 0])
+        L = []
+
+        while S:
+            n = S.popleft()
+            L.append(n)
+            for m in graph_dict[n]:
+                in_degree[m] -= 1
+                if in_degree[m] == 0:
+                    S.append(m)
+
+        if len(L) < len(graph_dict):
+            raise ValueError("Graf zawiera przynajmniej jeden cykl.")
+        return L
+
+    def topological_sort_tarjan(self):
+        visited_temp = set()   # tymczasowe oznaczenia
+        visited_perm = set()   # trwałe oznaczenia
+        result = []
+
+        def visit(node):
+            if node in visited_perm:
+                return
+            if node in visited_temp:
+                raise ValueError("Graf zawiera cykl — sortowanie niemożliwe.")
+
+            visited_temp.add(node)
+
+            for neighbor in self._neighbors(node - 1):
+                visit(neighbor)
+
+            visited_temp.remove(node)
+            visited_perm.add(node)
+            result.append(node)
+
+        for node in range(1, self.nodes + 1):
+            if node not in visited_perm:
+                visit(node)
+
+        result.reverse()  # kolejność odwrotna do kolejności odwiedzin
+        return result
+
 
     def generate_acyclic_graph(self, saturation):
         for i in range(1, self.nodes):
@@ -230,6 +283,19 @@ def main():
                     print(f"Błąd: Numer wierzchołka musi być w zakresie 1–{graph.nodes}.")
             except ValueError:
                 print("Błąd: Wprowadź poprawny numer wierzchołka.")
+        elif action == "kahn":
+            try:
+                order = graph.topological_sort_kahn()
+                print("Graf posortowany topologicznie algorytmem Kahna:", " ".join(map(str, order)))
+            except ValueError as e:
+                print("Błąd:", e)
+        elif action == "tarjan":
+            try:
+                order = graph.topological_sort_tarjan()
+                print("Topological order (Tarjan):", " ".join(map(str, order)))
+            except ValueError as e:
+                print("Błąd:", e)
+
         elif action in ("exit", "quit"):
             break
         elif action == "help":
@@ -239,6 +305,7 @@ Dostępne akcje:
   Find                  - Sprawdź, czy istnieje krawędź (od x y)
   Breadth-first search  - Przeszukiwanie wszerz (BFS)
   Depth-first search    - Przeszukiwanie w głąb (DFS)
+  Kahn                  - Sortowanie topologiczne algorytmem Kahna
   Export                - Eksportuj graf do pliku LaTeX (.tex) jako drzewo (TikZ)
   Help                  - Wyświetl to menu pomocy
   Exit / Quit           - Zakończ program
