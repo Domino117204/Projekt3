@@ -16,6 +16,9 @@ class Graph:
         v -= 1
         self.matrix[u][v] = 1
         self.adj_list[u].append(v + 1)
+        if self.representation == "table":
+            self.table.append((u + 1, v + 1))
+
 
     def print_graph(self):
         if self.representation == "matrix":
@@ -28,13 +31,10 @@ class Graph:
             for i in range(self.nodes):
                 print(f"{i+1}: {' '.join(map(str, self.adj_list[i]))}")
         elif self.representation == "table":
-            self.table = []
-            for i in range(self.nodes):
-                for j in self.adj_list[i]:
-                    self.table.append((i + 1, j))
             print("From -> To")
             for u, v in self.table:
-                print(f" {u}   -> {v}")
+                print(f" {u} -> {v}")
+
         else:
             print("Nieznana reprezentacja")
 
