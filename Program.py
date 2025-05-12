@@ -292,7 +292,7 @@ def main():
         elif action == "tarjan":
             try:
                 order = graph.topological_sort_tarjan()
-                print("Topological order (Tarjan):", " ".join(map(str, order)))
+                print("Graf posortowany topologicznie algorytmem Tarjana:", " ".join(map(str, order)))
             except ValueError as e:
                 print("Błąd:", e)
 
