@@ -25,8 +25,8 @@ class Graph:
             print("   |", " ".join(f"{i+1:>2}" for i in range(self.nodes)))
             print("---+" + "---" * self.nodes)
             for i in range(self.nodes):
-                row = " ".join(str(self.matrix[i][j]) for j in range(self.nodes))
-                print(f"{i+1:>2} | {row}")
+                row = "  ".join(str(self.matrix[i][j]) for j in range(self.nodes))
+                print(f"{i+1:>2} |  {row}")
         elif self.representation == "list":
             for i in range(self.nodes):
                 print(f"{i+1}: {' '.join(map(str, self.adj_list[i]))}")
