@@ -1,0 +1,162 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{siunitx} % dla jednostek
+\usepackage{colortbl}
+\definecolor{lightblue}{RGB}{204, 229, 255}
+\usepackage{tikz} % dodany jawnie dla pewności
+
+\pgfplotsset{
+	width=10cm, height=6cm, ymin=0, xmin=32, xmax=4096, grid=both,
+	xticklabel style={rotate=45, anchor=near xticklabel},
+	x label style={at={(axis description cs:0.5,-0.025)}},
+}
+% Marginesy strony
+\geometry{
+	a4paper,
+	left=20mm,
+	right=20mm,
+	top=30mm,
+	bottom=25mm,
+	headsep=20mm,
+}
+
+
+% Formatowanie sekcji
+\titleformat{\section}{\LARGE\bfseries\centering}{}{0em}{}
+
+\begin{document}
+	
+	\lstset{
+		backgroundcolor=\color{black},  % Tło czarne
+		basicstyle=\ttfamily\color{white},  % Kolor tekstu biały
+		keywordstyle=\color{cyan},  % Kolor słów kluczowych na niebiesko
+		commentstyle=\color{gray},  % Kolor komentarzy na szaro
+		stringstyle=\color{green},  % Kolor ciągów znaków na zielono
+		showstringspaces=false,  % Nie pokazuj spacji w ciągach
+		tabsize=3,  % Rozmiar tabulacji
+		breaklines=true,  % Łamanie długich linii
+		frame=none,  % Bez ramki
+		xleftmargin=0cm,  % Margines po lewej stronie
+		xrightmargin=0cm,  % Margines po prawej stronie
+		aboveskip=0pt,  % Odstęp przed
+		belowskip=0pt,  % Odstęp po
+		columns=fullflexible,  % Kolumny elastyczne
+		linewidth=\linewidth  % Szerokość linii na pełną szerokość
+	}
+	
+	% Strona tytułowa
+	\thispagestyle{empty} % Brak nagłówków/stopek na pierwszej stronie
+	
+	\begin{center}
+		\includegraphics[width=6cm]{Image/PP-PUT-LOGO.png}
+		\vspace{1cm}
+		
+		{\Huge\bfseries Politechnika Poznańska}
+		
+		\vspace{1cm}
+		
+		{\large Informatyka rok I semestr 2} \\[0.3cm]
+		L10, Piątek 11:45 - 13:15
+		
+		\vspace{1.5cm}
+		
+		{\LARGE\bfseries Algorytmy i Struktury Danych} \\[0.3cm]
+		\textbf{Prowadzący:} Dominik Piotr Witczak
+		
+		\vspace{2cm}
+		
+		% Poprawione formatowanie
+		{\LARGE\bfseries Sprawozdanie nr 3} 
+		
+		\vspace{1cm}
+		
+		{\Large\bfseries Sortowanietopologiczne grafy}
+		
+		\vspace{3cm}
+		
+		\begin{flushright}
+			\textbf{Autor:} \\[0.2cm]
+			Dominik Fischer 164176 \\
+			Oliwer Miller 163544
+		\end{flushright}
+		
+		\vspace{1.5cm}
+		Rok akademicki 2024/2025
+	\end{center}
+	
+	
+	
+	\newpage
+	\subsection*{Wprowadzenie}
+	
+	\subsection*{Generacja grafu}
+	
+	\subsection*{Porównanie czasów wykonania}
+	
+	\begin{figure}[H]
+		\centering
+		\noindent\resizebox{\textwidth}{!}{
+			\begin{tikzpicture}
+				\begin{axis}[%
+					name=plotA, anchor=left of south west,
+					width=10cm, height=4cm,
+					title={Złożoność Obliczeniowa - Find}, 
+					xlabel={Rozmiar instancji}, ylabel={Czas (ms)}, legend pos=north west,
+					xmode=log, log basis x={2},
+					every axis plot post/.style={very thick},
+					]
+					\addplot[red, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/find_matrix.csv};
+					\addplot[green, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/find_table.csv};
+					\addplot[blue, dotted, smooth] table[x=nodes,y=time,col sep=comma] {results/find_list.csv};
+					\legend{Matrix, Table, List}
+				\end{axis}
+				
+				\begin{axis}[%
+					title={Złożoność Obliczeniowa - Kahn}, 
+					width=10cm, height=4cm,
+					name=plotB, at=(plotA.below south west), anchor=above north west,
+					xlabel={Rozmiar instancji}, ylabel={Czas (ms)}, legend pos=north west,
+					xmode=log, log basis x={2},
+					every axis plot post/.style={very thick},
+					]
+					\addplot[red, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/kahn_matrix.csv};
+					\addplot[green, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/kahn_table.csv};
+					\addplot[blue, dotted, smooth] table[x=nodes,y=time,col sep=comma] {results/kahn_list.csv};
+					\legend{Matrix, Table, List}
+				\end{axis}
+				
+				\begin{axis}[%
+					title={Złożoność Obliczeniowa - Tarjan}, 
+					width=10cm, height=4cm,
+					name=plotC, at=(plotB.below south west), anchor=above north west,
+					xlabel={Rozmiar instancji}, ylabel={Czas (ms)}, legend pos=north west,
+					xmode=log, log basis x={2},
+					every axis plot post/.style={very thick},
+					]
+					\addplot[red, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/tarjan_matrix.csv};
+					\addplot[green, dashed, smooth] table[x=nodes,y=time,col sep=comma] {results/tarjan_table.csv};
+					\addplot[blue, dotted, smooth] table[x=nodes,y=time,col sep=comma] {results/tarjan_list.csv};
+					\legend{Matrix, Table, List}
+				\end{axis}
+			\end{tikzpicture}
+		}
+		\caption{Porównanie czasów wykonania dla 3 operacji i 3 reprezentacji grafów}
+	\end{figure}
+	
+	\subsection*{Podsumowanie}
+	
+\end{document}
