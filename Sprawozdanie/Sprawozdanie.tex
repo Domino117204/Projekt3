@@ -84,7 +84,7 @@
 		
 		\vspace{1cm}
 		
-		{\Large\bfseries Sortowanietopologiczne grafy}
+		{\Large\bfseries Sortowanie topologiczne grafów}
 		
 		\vspace{3cm}
 		
@@ -101,9 +101,16 @@
 	
 	
 	\newpage
-	\subsection*{Wprowadzenie}
+	%\subsection*{Wprowadzenie}
+	\titleformat{\section}{\Huge\bfseries}{\thesection}{2em}{}
+	\section*{\textcolor{blue}{Wprowadzenie}}
+	\noindent Celem niniejszego grafu jest reprezentacja grafu i jego generacji oraz przedstawiene go w trzech formach: macierz grafu, lista sąsiadów i tabela. Przedstawimy również na wykresach wyniki pomiarów czasowych akcji wykonywanych na grafach, w zależności od liczby wierzchołków. 
 	
-	\subsection*{Generacja grafu}
+	\section*{\textcolor{blue}{Struktura grafu}}
+	\noindent Klasa \textit{Graph} zawiera odwołanie do wierzchołków, wybranej reprezentacji oraz każdą z tych reprezentacji.
+	\subsection*{\textcolor{blue}{Generacja grafu}}
+	\noindent Funkcja \textit{generate\_acyclic\_graph()} ma za zadanie wygenerowanie losowego acyklicznego grafu skierowanego z nasyceniem \textit{saturation}, którego wartość jest wprowadzana przy uruchamianiu programu z \verb|--generate|. Tworzona jest lista możliwych krawędzi idących z wierzchołka mniejszego do większego, aby uniknąć tworzenia cyklów. Następnie, na podstawie podanego nasycenia, jest wyliczana ilość krawędzi do dodania, które są losowo wybierane z listy i dodawane do grafu.
+	
 	
 	\subsection*{Porównanie czasów wykonania}
 	
