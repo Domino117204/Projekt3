@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.19)  21 MAY 2025 14:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.19)  21 MAY 2025 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,45 +1001,61 @@ Package pdftex.def Info: Image/PP-PUT-LOGO.png  used on input line 65.
 {C:/Users/oliwe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/oliw
 e/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./Image/PP-PUT-L
 OGO.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
+16.
+
+(C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+(C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-12.
+18.
 
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+
+ []
+
 PGFPlots: reading {results/find_matrix.csv}
 PGFPlots: reading {results/find_table.csv}
 PGFPlots: reading {results/find_list.csv}
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-63.
-
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
+01.
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-63.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+01.
 
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-163.
+201.
 
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-163.
+201.
 
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 163.
+(Font)              <10> on input line 201.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 163.
+(Font)              <7> on input line 201.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 163.
+(Font)              <5> on input line 201.
 PGFPlots: reading {results/kahn_matrix.csv}
 PGFPlots: reading {results/kahn_table.csv}
 PGFPlots: reading {results/kahn_list.csv}
@@ -1050,20 +1066,20 @@ PGFPlots: reading {results/tarjan_list.csv}
 [3{C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
 :/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
 :/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-(Sprawozdanie.aux)
+[4] (Sprawozdanie.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33745 strings out of 474486
- 864761 string characters out of 5743754
- 1957542 words of memory out of 5000000
- 55537 multiletter control sequences out of 15000+600000
- 604429 words of font info for 59 fonts, out of 8000000 for 9000
+ 34242 strings out of 474486
+ 870094 string characters out of 5743754
+ 2035542 words of memory out of 5000000
+ 56027 multiletter control sequences out of 15000+600000
+ 607197 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,21n,101p,731b,2234s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,21n,101p,731b,2231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
@@ -1071,12 +1087,13 @@ b><C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
 ><C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
 <C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C
 :/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C
-:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C
-:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:
-/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Sprawozdanie.pdf (3 pages, 223356 bytes).
+:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb>
+<C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+<C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><
+C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on Sprawozdanie.pdf (4 pages, 253465 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
