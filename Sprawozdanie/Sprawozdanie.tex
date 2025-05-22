@@ -18,6 +18,10 @@
 \usepackage{colortbl}
 \definecolor{lightblue}{RGB}{204, 229, 255}
 \usepackage{tikz} % dodany jawnie dla pewności
+\usepackage{graphicx}  % do wstawiania obrazów
+\usepackage{caption}   % (opcjonalnie) dla \caption*{}
+
+
 
 \pgfplotsset{
 	width=10cm, height=6cm, ymin=0, xmin=32, xmax=4096, grid=both,
@@ -202,8 +206,58 @@
 		\caption{Porównanie czasów wykonania dla 3 operacji i 3 reprezentacji grafów}
 	\end{figure}
 	
+	\section*{\textcolor{blue}{Generowanie grafu}}
+	\noindent Tworzenie grafu przez użytkownika następuje przez użytkownika następuje przez wybór jego reprezentacji, a następnie przypisaniu krawędzi między wybranymi wierzchołkami. Proces jest taki sam dla każdej reprezentacji.
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.7\textwidth]{reprezentacja_matrix_g.png} 
+		\caption{Tworzenie przez użytkownika}
+		\label{fig:moje-zdjecie}
+	\end{figure}
+	
+	 \noindent Graf może być również wygenerowany automatycznie. W takim przypadku użytkownik wybiera reprezentację grafu, ilość wierzchołków i wartość nasycenia.
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.7\textwidth]{generate_graph.png} 
+		\caption{Automatyczne generowanie grafu}
+		\label{fig:moje-zdjecie}
+	\end{figure}
+	
+	\clearpage
+	
+	\section*{\textcolor{blue}{Wypisanie grafu}}
+
+	\begin{figure}[htbp]
+		\centering
+		\begin{minipage}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{reprezentacja_matrix_k.png}
+			\par\small (a) Macierz grafu
+			
+		\end{minipage}
+		\hfill
+		\begin{minipage}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{reprezentacja_list_k.png}
+			\par\small (b) Lista
+		\end{minipage}
+		\hfill
+		\begin{minipage}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{reprezentacja_table_k.png}
+			\par\small (c) Macierz grafu
+		\end{minipage}
+		\caption{Trzy reprezentacje grafu}
+		\label{fig:trzy-obrazki}
+	\end{figure}
+	
+	
+	
 	%\subsection*{Podsumowanie}
 	\section*{\textcolor{blue}{Wnioski}}
+	
 	\noindent Akcja Find ma za zadanie sprawdzić czy istnieje krawędź między dwoma danymi wierzchołkami. Wszystkie reprezentacje grafu wypadają tak samo dobrze do wielkości danych około $2^{10}$. Przy większych danych złożoność obliczeniowa Find w macierzy grafu znacznie wzrasta. W przypadku listy złożoność też wzrasta, jednak nie tak gwałtownie, a dla tablicy złożoność pozostaje taka sama.
 	\\ W sortowaniu topologicznym algorytmem Kahna wszystkie reprezentacje wypadają bardzo podobnie, jedynie w dla danych o wielkości około $2^{11}$ dana akcja wykonuje się szybciej dla macierzy grafu.
 	\\ W sortowaniu topologicznym algorytmem Tarjana złożoność obliczeniowa dla tablicy wzrasta od rozmiaru danych wynoszącemu $2^{10}$ elementów. Złożoność obliczeniowa dla macierzy i listy pozostaje stała.

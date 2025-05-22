@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.19)  21 MAY 2025 22:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.19)  22 MAY 2025 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./test.tex
-(test.tex
+**./testowy_tabela.tex
+(testowy_tabela.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\oliwe\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -373,8 +373,8 @@ tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count282
 \l__pdf_internal_box=\box62
-) (test.aux)
-\openout1 = `test.aux'.
+) (testowy_tabela.aux)
+\openout1 = `testowy_tabela.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -418,23 +418,23 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 )) [1
 
 {C:/Users/oliwe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(test.aux)
+(testowy_tabela.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11838 strings out of 474486
- 251195 string characters out of 5743754
- 1927542 words of memory out of 5000000
- 33960 multiletter control sequences out of 15000+600000
+ 11848 strings out of 474486
+ 251359 string characters out of 5743754
+ 1928542 words of memory out of 5000000
+ 33970 multiletter control sequences out of 15000+600000
  558069 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,107p,403b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,6n,107p,413b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/oliwe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmr10.pfb>
-Output written on test.pdf (1 page, 12118 bytes).
+Output written on testowy_tabela.pdf (1 page, 12727 bytes).
 PDF statistics:
  14 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

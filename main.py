@@ -33,7 +33,7 @@ class Graph:
         elif self.representation == "table":
             print("From -> To")
             for u, v in self.table:
-                print(f" {u} -> {v}")
+                print(f"   {u} -> {v}")
 
         else:
             print("Nieznana reprezentacja")
